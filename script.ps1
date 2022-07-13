@@ -34,11 +34,16 @@ function change-name {
          Restart-Computer
          Remove-Item 'C:\stepfile\4.txt'
      }
+     if (Test-Path C:\stepfile\5.txt){
+        New-ADUser -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -SamAccountName "dautomate" -UserPrincipalName "dautomate@testdomain.local" -AccountPassword(Convert-ToSecureString "Autom@te1" -AsPlainText -force) -Enabled $true
+        Remove-Item 'C:\stepfile\5.txt'
+    }
  }else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
      New-Item 'C:\stepfile\1.txt'
      New-Item 'C:\stepfile\2.txt'
      New-Item 'C:\stepfile\3.txt'
      New-Item 'C:\stepfile\4.txt'
+     New-Item 'C:\stepfile\5.txt'
      change-name
  }
