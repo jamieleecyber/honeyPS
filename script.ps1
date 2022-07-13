@@ -46,11 +46,26 @@ function change-name {
         Remove-Item 'C:\stepfile\4.txt'
         Restart-Computer
      }
+     if (Test-Path C:\stepfile\5.txt){
+        New-Item 'C:\reached5.txt'
+        Remove-Item 'C:\stepfile\5.txt'
+     }
+     if (Test-Path C:\stepfile\6.txt){
+        New-Item 'C:\reached6.txt'
+        Remove-Item 'C:\stepfile\6.txt'
+     }
+     if (Test-Path C:\stepfile\7.txt){
+        New-Item 'C:\reached7.txt'
+        Remove-Item 'C:\stepfile\7.txt'
+     }
  }else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
      New-Item 'C:\stepfile\1.txt'
      New-Item 'C:\stepfile\2.txt'
      New-Item 'C:\stepfile\3.txt'
      New-Item 'C:\stepfile\4.txt'
+     New-Item 'C:\stepfile\5.txt'
+     New-Item 'C:\stepfile\6.txt'
+     New-Item 'C:\stepfile\7.txt'
      change-name
  }
