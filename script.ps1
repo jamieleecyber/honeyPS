@@ -48,7 +48,7 @@ function change-name {
      }
      if (Test-Path C:\stepfile\5.txt){
         New-Item 'C:\reachedstep5.txt'
-        Start-Process -FilePath "C:\honeyPS\createdomainadmin.ps1" -Wait
+        Start-Process powershell.exe -ArgumentList "-file C:\honeyPS\createdomainadmin.ps1"
         New-Item 'C:\completedstep5.txt'
         Remove-Item 'C:\stepfile\5.txt'
      }
