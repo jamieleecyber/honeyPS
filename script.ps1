@@ -21,7 +21,8 @@ function change-name {
  }
 
  function create-user {
-    New-ADUser -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -SamAccountName "dautomate" -UserPrincipalName "dautomate@testdomain.local" -AccountPassword(ConvertTo-SecureString "Autom@te1" -AsPlainText -force) -Enabled $true
+    Import-Module activedirectory
+    New-ADUser -SamAccountName "automate" -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -UserPrincipalName "automate@testdomain.local" -AccountPassword(ConvertTo-SecureString "Autom@te1" -AsPlainText -Force) -Enabled $true
     Remove-Item 'C:\stepfile\5.txt'
 }
 
