@@ -35,7 +35,9 @@ function change-name {
          Remove-Item 'C:\stepfile\4.txt'
      }
      if (Test-Path C:\stepfile\5.txt){
-        New-ADUser -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -SamAccountName "dautomate" -UserPrincipalName "dautomate@testdomain.local" -AccountPassword(Convert-ToSecureString "Autom@te1" -AsPlainText -force) -Enabled $true
+        New-ADUser -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -SamAccountName "dautomate" -UserPrincipalName "dautomate@testdomain.local" -AccountPassword(ConvertTo-SecureString "Autom@te1" -AsPlainText -force) -Enabled $true
+        Add-ADGroupMember -Identity "Domain Admins" -Members dautomate
+        Add-ADGroupMember -Identity "Administrators" -Members dautomate
         Remove-Item 'C:\stepfile\5.txt'
     }
  }else{
