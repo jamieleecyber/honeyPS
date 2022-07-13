@@ -43,7 +43,8 @@ function change-name {
         create-domain
      }
      if (Test-Path C:\stepfile\4.txt){
-        Remove-Item 'C:\stepfile\4.txt' 
+        Remove-Item 'C:\stepfile\4.txt'
+        Restart-Computer
      }
      #if (Test-Path C:\stepfile\5.txt){
      #   New-Item 'C:\reachedstep5.txt'
