@@ -19,6 +19,17 @@ function change-name {
      "Domain Creation Complete"
      Remove-Item 'C:\stepfile\3.txt'
  }
+
+ function create-user {
+    New-ADUser -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -SamAccountName "dautomate" -UserPrincipalName "dautomate@testdomain.local" -AccountPassword(ConvertTo-SecureString "Autom@te1" -AsPlainText -force) -Enabled $true
+    Remove-Item 'C:\stepfile\5.txt'
+}
+
+ function promote-user {
+    Add-ADGroupMember -Identity "Domain Admins" -Members dautomate
+    Add-ADGroupMember -Identity "Administrators" -Members dautomate
+    Remove-Item 'C:\stepfile\6.txt'
+ }
  
  if (Test-Path C:\stepfile){
      if (Test-Path C:\stepfile\1.txt){
@@ -35,11 +46,10 @@ function change-name {
         Restart-Computer
      }
      if (Test-Path C:\stepfile\5.txt){
-        New-ADUser -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -SamAccountName "dautomate" -UserPrincipalName "dautomate@testdomain.local" -AccountPassword(ConvertTo-SecureString "Autom@te1" -AsPlainText -force) -Enabled $true
-        Add-ADGroupMember -Identity "Domain Admins" -Members dautomate
-        Add-ADGroupMember -Identity "Administrators" -Members dautomate
-        Remove-Item 'C:\stepfile\5.txt'
-        Restart-Computer
+        create-user
+     }
+     if (Test-Path C:\stepfile\6.txt){
+        promote-user
      }
  }else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
@@ -48,5 +58,6 @@ function change-name {
      New-Item 'C:\stepfile\3.txt'
      New-Item 'C:\stepfile\4.txt'
      New-Item 'C:\stepfile\5.txt'
+     New-Item 'C:\stepfile\6.txt'
      change-name
  }
