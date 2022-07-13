@@ -44,13 +44,9 @@ function change-name {
      }
      if (Test-Path C:\stepfile\4.txt){
         Remove-Item 'C:\stepfile\4.txt' 
-        Restart-Computer
      }
      if (Test-Path C:\stepfile\5.txt){
-        create-user
-     }
-     if (Test-Path C:\stepfile\6.txt){
-        promote-user
+        Start-Process -FilePath "C:\honeyPS\createdomainadmin.ps1" -Wait
      }
  }else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
@@ -59,6 +55,5 @@ function change-name {
      New-Item 'C:\stepfile\3.txt'
      New-Item 'C:\stepfile\4.txt'
      New-Item 'C:\stepfile\5.txt'
-     New-Item 'C:\stepfile\6.txt'
      change-name
  }
