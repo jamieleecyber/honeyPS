@@ -31,15 +31,16 @@ function change-name {
         create-domain
      }
      if (Test-Path C:\stepfile\4.txt){
-         Restart-Computer
-         Remove-Item 'C:\stepfile\4.txt'
+        Remove-Item 'C:\stepfile\4.txt' 
+        Restart-Computer
      }
      if (Test-Path C:\stepfile\5.txt){
         New-ADUser -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -SamAccountName "dautomate" -UserPrincipalName "dautomate@testdomain.local" -AccountPassword(ConvertTo-SecureString "Autom@te1" -AsPlainText -force) -Enabled $true
         Add-ADGroupMember -Identity "Domain Admins" -Members dautomate
         Add-ADGroupMember -Identity "Administrators" -Members dautomate
         Remove-Item 'C:\stepfile\5.txt'
-    }
+        Restart-Computer
+     }
  }else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
      New-Item 'C:\stepfile\1.txt'
