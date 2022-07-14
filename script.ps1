@@ -13,9 +13,9 @@ function change-name {
  
  function create-domain {
      "Converting secure password"
-     $Secure = ConvertTo-SecureString "SMAdminPassw0rd" -AsPlainText -Force
+     #$Secure = ConvertTo-SecureString "SMAdminPassw0rd" -AsPlainText -Force
      "Creating domain"
-     Install-ADDSForest -DomainName "testdomain.local" -DomainNetBiosName "testdomain" -SafeModeAdministratorPassword $Secure -InstallDns:$true -NoRebootOnCompletion:$true -Force
+     #Install-ADDSForest -DomainName "testdomain.local" -DomainNetBiosName "testdomain" -SafeModeAdministratorPassword $Secure -InstallDns:$true -NoRebootOnCompletion:$true -Force
      "Domain Creation Complete"
      Remove-Item 'C:\stepfile\3.txt'
  }
