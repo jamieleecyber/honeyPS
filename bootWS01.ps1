@@ -1,9 +1,3 @@
-$dc = "testdomain.local"
-$password = "LazyAdminPwd123!" | ConvertTo-SecureString -asPlainText –Force
-$user = "$dc\JamieSA"
-$creds = New-Object System.Management.Automation.PSCredential($user,$password)
-Add-Computer -DomainName $dc -Credential $creds -Restart -Force -Verbose
-
 function change-name {
     Rename-Computer -NewName WS01
     Remove-Item 'C:\stepfile\1.txt'
