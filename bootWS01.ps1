@@ -38,5 +38,6 @@ function join-domain {
      New-Item 'C:\stepfile\2.txt'
      New-Item 'C:\stepfile\3.txt'
      New-Item 'C:\stepfile\4.txt'
+     Start-Sleep -Seconds 300
      change-name
 }
