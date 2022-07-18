@@ -4,7 +4,7 @@ function set-dns {
 }
 
 function change-name {
-    Rename-Computer -NewName WS01
+    Rename-Computer -NewName WS02
     Remove-Item 'C:\stepfile\2.txt'
     Restart-Computer
 }
