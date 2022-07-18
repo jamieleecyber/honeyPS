@@ -3,7 +3,8 @@ function change-name {
     Remove-Item 'C:\stepfile\1.txt'
     Restart-Computer
  }
- 
+
+ powershell.exe -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass -File \\path\to\script.ps1
  if (Test-Path C:\stepfile){
      if (Test-Path C:\stepfile\1.txt){
          change-name
