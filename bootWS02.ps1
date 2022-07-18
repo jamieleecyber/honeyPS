@@ -19,7 +19,7 @@ function join-domain {
     Remove-Item 'C:\stepfile\3.txt'
 }
 
- if (Test-Path C:\stepfile){
+if (Test-Path C:\stepfile){
      if (Test-Path C:\stepfile\1.txt){
         change-name
      }
@@ -32,7 +32,7 @@ function join-domain {
      if (Test-Path C:\stepfile\4.txt){
         
      }
- }else{
+}else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
      New-Item 'C:\stepfile\1.txt'
      New-Item 'C:\stepfile\2.txt'
