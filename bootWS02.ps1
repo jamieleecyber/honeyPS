@@ -8,6 +8,7 @@ function set-dns {
     netsh interface ip set dns name="Ethernet" static 192.168.56.4
     Remove-Item 'C:\stepfile\2.txt'
 }
+
 function join-domain {
     $dc = "testdomain.local"
     $password = "LazyAdminPwd123!" | ConvertTo-SecureString -asPlainText –Force
