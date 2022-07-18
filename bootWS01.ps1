@@ -26,4 +26,4 @@ function change-name {
      New-Item 'C:\stepfile\4.txt'
      Start-Sleep -Seconds 300
      change-name
-}
+ }
