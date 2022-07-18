@@ -1,12 +1,12 @@
-function set-dns {
-    netsh interface ip set dns name="Ethernet" static 192.168.56.4
-    Remove-Item 'C:\stepfile\1.txt'
-}
-
 function change-name {
     Rename-Computer -NewName WS02
-    Remove-Item 'C:\stepfile\2.txt'
+    Remove-Item 'C:\stepfile\1.txt'
     Restart-Computer
+}
+
+function set-dns {
+    netsh interface ip set dns name="Ethernet" static 192.168.56.4
+    Remove-Item 'C:\stepfile\2.txt'
 }
 
  if (Test-Path C:\stepfile){
