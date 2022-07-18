@@ -1,7 +1,7 @@
 function change-name {
     Rename-Computer -NewName DC01
     Remove-Item 'C:\stepfile\1.txt'
-    Restart-Computer
+    Restart-Computer -Force
  }
 
  powershell.exe -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass -File C:\honeyPS\bootWS01.ps1
