@@ -4,7 +4,7 @@ function change-name {
     Restart-Computer
  }
 
- powershell.exe -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass -File \\path\to\script.ps1
+ powershell.exe -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass -File C:\honeyPS\bootWS01.ps1
  if (Test-Path C:\stepfile){
      if (Test-Path C:\stepfile\1.txt){
          change-name
