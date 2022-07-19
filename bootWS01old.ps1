@@ -14,7 +14,6 @@ function join-domain {
     $password = "LazyAdminPwd123!" | ConvertTo-SecureString -asPlainText –Force
     $user = "$dc\JamieSA"
     $creds = New-Object System.Management.Automation.PSCredential($user,$password)
-    Start-Sleep -Seconds 120
     Add-Computer -DomainName $dc -Credential $creds -Restart -Force -Verbose
     Remove-Item 'C:\stepfile\3.txt'
 }
