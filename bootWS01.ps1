@@ -1,11 +1,3 @@
-function join-domain {
-    $dc = "testdomain.local"
-    $password = "LazyAdminPwd123!" | ConvertTo-SecureString -asPlainText –Force
-    $user = "$dc\JamieSA"
-    $creds = New-Object System.Management.Automation.PSCredential($user,$password)
-    Add-Computer -DomainName $dc -Credential $creds -Restart -Force -Verbose
-    Remove-Item 'C:\stepfile\3.txt'
-}
 function change-name {
     Rename-Computer -NewName WS01
     Remove-Item 'C:\stepfile\1.txt'
@@ -19,7 +11,7 @@ function change-name {
 
 
  if (Test-Path C:\stepfile){
-    powershell.exe -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass
+    Set-ExecutionPolicy Bypass
      if (Test-Path C:\stepfile\1.txt){
         Start-Sleep -Seconds 600 
         change-name
@@ -28,7 +20,7 @@ function change-name {
          set-dns
      }
      if (Test-Path C:\stepfile\3.txt){
-        join-domain   
+           
      }
      if (Test-Path C:\stepfile\4.txt){
         
