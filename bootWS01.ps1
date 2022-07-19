@@ -13,11 +13,11 @@ function change-name {
  if (Test-Path C:\stepfile){
     Set-ExecutionPolicy Bypass
      if (Test-Path C:\stepfile\1.txt){
-        Start-Sleep -Seconds 300 
+        Start-Sleep -Seconds 1200 
         change-name
      }
      if (Test-Path C:\stepfile\2.txt){
-         # set-dns
+         set-dns
      }
      if (Test-Path C:\stepfile\3.txt){
                 
