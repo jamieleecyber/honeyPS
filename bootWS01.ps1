@@ -17,7 +17,7 @@ function change-name {
         change-name
      }
      if (Test-Path C:\stepfile\2.txt){
-         set-dns
+         # set-dns
      }
      if (Test-Path C:\stepfile\3.txt){
                 
