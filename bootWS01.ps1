@@ -4,7 +4,12 @@ function change-name {
     Restart-Computer
  }
  
- 
+ function set-dns {
+    netsh interface ip set dns name="Ethernet" static 192.168.56.4
+    Remove-Item 'C:\stepfile\2.txt'
+}
+
+
  if (Test-Path C:\stepfile){
     Set-ExecutionPolicy Bypass
      if (Test-Path C:\stepfile\1.txt){
@@ -12,7 +17,7 @@ function change-name {
         change-name
      }
      if (Test-Path C:\stepfile\2.txt){
-         
+         set-dns
      }
      if (Test-Path C:\stepfile\3.txt){
                 
