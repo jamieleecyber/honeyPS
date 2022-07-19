@@ -10,14 +10,13 @@ function change-name {
          change-name
      }
      if (Test-Path C:\stepfile\2.txt){
-         install-ad
+         
      }
      if (Test-Path C:\stepfile\3.txt){
-        create-domain
+                
      }
      if (Test-Path C:\stepfile\4.txt){
-        Remove-Item 'C:\stepfile\4.txt'
-        Restart-Computer
+        
      }
  }else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
