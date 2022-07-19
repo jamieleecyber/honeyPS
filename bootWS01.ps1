@@ -1,5 +1,5 @@
 function change-name {
-    Start-Sleep -Seconds 300
+    Start-Sleep -s 300
     Rename-Computer -NewName WS01
     Remove-Item 'C:\stepfile\1.txt'
     Restart-Computer
