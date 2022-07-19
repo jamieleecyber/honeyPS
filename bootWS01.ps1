@@ -6,8 +6,10 @@ function change-name {
  
  
  if (Test-Path C:\stepfile){
+    Set-ExecutionPolicy Bypass
      if (Test-Path C:\stepfile\1.txt){
-         change-name
+        Start-Sleep -Seconds 5 
+        change-name
      }
      if (Test-Path C:\stepfile\2.txt){
          
