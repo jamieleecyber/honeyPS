@@ -20,7 +20,7 @@ function change-name {
          set-dns
      }
      if (Test-Path C:\stepfile\3.txt){
-        cd C:/honeyPS
+        Set-Location C:/honeyPS
         ./joindomain.ps1
      }
      if (Test-Path C:\stepfile\4.txt){

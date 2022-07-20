@@ -1,4 +1,4 @@
-powershell.exe -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass
+Set-ExecutionPolicy -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass
 $dc = "testdomain.local"
 $password = "LazyAdminPwd123!" | ConvertTo-SecureString -asPlainText -Force
 $user = "$dc\JamieSA"
