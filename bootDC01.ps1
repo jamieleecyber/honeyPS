@@ -24,22 +24,6 @@ function change-name {
      Remove-Item 'C:\stepfile\3.txt'
      Write-Output "$(Get-Date) create-domain complete" | Out-file C:\log.txt -append
  }
-
- function create-user {
-    Write-Output "$(Get-Date) create-user called" | Out-file C:\log.txt -append
-    Import-Module activedirectory
-    New-ADUser -SamAccountName "automate" -Name "Domain Automate" -GivenName "Domain" -Surname "Automate" -UserPrincipalName "automate@testdomain.local" -AccountPassword(ConvertTo-SecureString "Autom@te1" -AsPlainText -Force) -Enabled $true
-    Remove-Item 'C:\stepfile\5.txt'
-    Write-Output "$(Get-Date) create-user complete" | Out-file C:\log.txt -append
-}
-
- function promote-user {
-    Write-Output "$(Get-Date) promote-user called" | Out-file C:\log.txt -append
-    Add-ADGroupMember -Identity "Domain Admins" -Members dautomate
-    Add-ADGroupMember -Identity "Administrators" -Members dautomate
-    Remove-Item 'C:\stepfile\6.txt'
-    Write-Output "$(Get-Date) promote-user complete" | Out-file C:\log.txt -append
- }
  
  if (Test-Path C:\stepfile){
      if (Test-Path C:\stepfile\1.txt){
