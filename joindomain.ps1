@@ -1,5 +1,5 @@
 Set-ExecutionPolicy -NoProfile -NoLogo -NonInteractive -ExecutionPolicy Bypass -Force
-Write-Output "$(Get-TimeStamp) joindomain called" | Out-file C:\log.txt -append
+Write-Output "$(Get-Date) joindomain called" | Out-file C:\log.txt -append
 $dc = "testdomain.local"
 $password = "LazyAdminPwd123!" | ConvertTo-SecureString -asPlainText -Force
 $user = "$dc\JamieSA"
