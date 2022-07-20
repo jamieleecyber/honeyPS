@@ -1,8 +1,8 @@
 function change-name {
-    Write-Output "$(Get-Date) start sleep" | Out-file C:\log.txt -append
-    Start-Sleep -Seconds 60 
-    Write-Output "$(Get-Date) end sleep" | Out-file C:\log.txt -append
     Write-Output "$(Get-Date) change-name called" | Out-file C:\log.txt -append
+    Write-Output "$(Get-Date) change-name Start Sleep" | Out-file C:\log.txt -append
+    Start-Sleep -Seconds 60 
+    Write-Output "$(Get-Date) change-name stop sleep" | Out-file C:\log.txt -append
     Rename-Computer -NewName WS01
     Remove-Item 'C:\stepfile\1.txt'
     Restart-Computer -Force
