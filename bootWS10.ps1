@@ -1,42 +1,40 @@
 function change-name {
-    Rename-Computer -NewName WS01
+    Write-Output "$(Get-Date) change-name called" | Out-file C:\log.txt -append
+    Rename-Computer -NewName WS010
     Remove-Item 'C:\stepfile\1.txt'
-    Restart-Computer
-}
-
-function set-dns {
+    Restart-Computer -Force
+ }
+ 
+ function set-dns {
+    Write-Output "$(Get-Date) set-dns Start Sleep" | Out-file C:\log.txt -append
+    Start-Sleep -Seconds 60 
+    Write-Output "$(Get-Date) set-dns stop sleep" | Out-file C:\log.txt -append
+    Write-Output "$(Get-Date) set dns called" | Out-file C:\log.txt -append
     netsh interface ip set dns name="Ethernet" static 192.168.56.4
     Remove-Item 'C:\stepfile\2.txt'
 }
 
-function join-domain {
-    $dc = "testdomain.local"
-    $password = "LazyAdminPwd123!" | ConvertTo-SecureString -asPlainText –Force
-    $user = "$dc\JamieSA"
-    $creds = New-Object System.Management.Automation.PSCredential($user,$password)
-    Add-Computer -DomainName $dc -Credential $creds -Restart -Force -Verbose
-    Remove-Item 'C:\stepfile\3.txt'
-}
 
-if (Test-Path C:\stepfile){
+ if (Test-Path C:\stepfile){
+    Set-ExecutionPolicy Bypass
      if (Test-Path C:\stepfile\1.txt){
         change-name
      }
      if (Test-Path C:\stepfile\2.txt){
-        set-dns
+         set-dns
      }
      if (Test-Path C:\stepfile\3.txt){
-        join-domain       
+        Set-Location C:/honeyPS
+        ./joindomain.ps1
      }
      if (Test-Path C:\stepfile\4.txt){
         
      }
-}else{
+ }else{
      New-Item -Path 'C:\stepfile' -ItemType Directory
      New-Item 'C:\stepfile\1.txt'
      New-Item 'C:\stepfile\2.txt'
      New-Item 'C:\stepfile\3.txt'
      New-Item 'C:\stepfile\4.txt'
-     Start-Sleep -Seconds 300
      change-name
-}
+ }
