@@ -24,7 +24,16 @@ function change-name {
      Remove-Item 'C:\stepfile\3.txt'
      Write-Output "$(Get-Date) create-domain complete" | Out-file C:\log.txt -append
  }
+
+ function run-badblood {
+    Set-Location C:/
+    Write-Output "$(Get-Date) cloning bad blood" | Out-file C:\log.txt -append
+    git clone https://github.com/davidprowe/BadBlood.git
+    Set-Location BadBlood
+    .\Invoke-BadBlood.ps1 -UserCount 95 -NonInteractive $true
+ }
  
+
  if (Test-Path C:\stepfile){
      if (Test-Path C:\stepfile\1.txt){
          change-name
@@ -36,7 +45,11 @@ function change-name {
         create-domain
      }
      if (Test-Path C:\stepfile\4.txt){
+        run-badblood
         Remove-Item 'C:\stepfile\4.txt'
+     }
+     if (Test-Path C:\stepfile\5.txt){
+        Remove-Item 'C:\stepfile\5.txt'
         Restart-Computer
      }
  }else{
@@ -45,5 +58,6 @@ function change-name {
      New-Item 'C:\stepfile\2.txt'
      New-Item 'C:\stepfile\3.txt'
      New-Item 'C:\stepfile\4.txt'
+     New-Item 'C:\stepfile\5.txt'
      change-name
  }
