@@ -31,6 +31,7 @@ function change-name {
     git clone https://github.com/davidprowe/BadBlood.git
     Set-Location BadBlood
     .\Invoke-BadBlood.ps1 -UserCount 95 -NonInteractive $true
+    Write-Output "$(Get-Date) badblood run complete" | Out-file C:\log.txt -append
  }
  
 
