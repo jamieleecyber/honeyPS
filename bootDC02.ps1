@@ -16,17 +16,9 @@ function change-name {
  
  function join-domaincontroller {
     Install-ADDSDomainController -DomainName testdomain.local -InstallDns:$true -NoRebootOnCompletion:$true -Force:$true -SafeModeAdministratorPassword (ConvertTo-SecureString 'LazyAdminPwd123!' -AsPlainText -Force) -Credential (get-credential testdomain\JamieSA) –verbose
- }
+ } 
 
- function run-badblood {
-    Set-Location C:/
-    Write-Output "$(Get-Date) cloning bad blood" | Out-file C:\log.txt -append
-    git clone https://github.com/davidprowe/BadBlood.git
-    Set-Location BadBlood
-    .\Invoke-BadBlood.ps1 -UserCount 95 -NonInteractive $true
- }
  
-
  if (Test-Path C:\stepfile){
      if (Test-Path C:\stepfile\1.txt){
          change-name
